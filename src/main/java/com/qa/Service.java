@@ -6,9 +6,10 @@ public class Service {
 	private HashMap<Integer, Account> accounts = new HashMap<>();
 	private int counter = 1;
 	
-	public void addAccount(String firstName, String lastName) {
+	public boolean addAccount(String firstName, String lastName) {
 		accounts.put(counter, new Account(firstName, lastName, counter));
 		counter++;
+		return true;
 	}
 	
 	public Account getAccount(int accountNumber) {
