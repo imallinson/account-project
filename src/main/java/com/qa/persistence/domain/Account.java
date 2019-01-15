@@ -1,4 +1,4 @@
-package com.qa;
+package com.qa.persistence.domain;
 
 public class Account {
 	private String firstName;
