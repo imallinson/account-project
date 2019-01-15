@@ -1,8 +1,9 @@
-package com.qa;
+package com.qa.testing;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.*;  
 import org.junit.*;
+
+import com.qa.rest.Service;
 
 public class Tests {
 	Service service;
@@ -21,5 +22,11 @@ public class Tests {
 	public void getTest() {
 		service.addAccount("Ian", "Mallinson");
 		assertEquals("Ian" , service.getAccount(1).getFirstName());
+	}
+	
+	@Test
+	public void jsonTest() {
+		service.addAccount("Ian", "Mallinson");
+		assertEquals("{\"firstName\":\"Ian\",\"lastName\":\"Mallinson\",\"accountNumber\":1}" , service.getJSON(1));
 	}
 }
