@@ -1,6 +1,12 @@
 package com.qa.persistence.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Account {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String accountNumber;
@@ -9,6 +15,10 @@ public class Account {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.accountNumber = accountNumber;
+	}
+	
+	public Long getId() {
+		return id;
 	}
 
 	public String getFirstName() {
