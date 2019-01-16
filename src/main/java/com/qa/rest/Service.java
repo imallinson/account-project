@@ -1,8 +1,6 @@
 package com.qa.rest;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import com.qa.persistence.domain.Account;
 import com.qa.util.JSONUtil;
@@ -29,7 +27,6 @@ public class Service {
 	}
 
 	public int searchName(String firstName) {
-		List<Account> foundAccounts = accounts.values().stream().filter(a -> a.getFirstName().equals(firstName)).collect(Collectors.toList());
-		return foundAccounts.size();
+		return (int) accounts.values().stream().filter(a -> a.getFirstName().equals(firstName)).count();		
 	}
 }
