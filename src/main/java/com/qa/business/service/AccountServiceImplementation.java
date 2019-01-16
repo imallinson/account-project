@@ -20,4 +20,10 @@ public class AccountServiceImplementation implements AccountService {
 		return null;
 	}
 
+	@Override
+	public String updateAccount(Long id, String firstName, String lastName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
