@@ -25,12 +25,12 @@ public class ServiceTests {
 	public void getAccountTest() {
 		assertEquals("Ian" , service.getAccount(1).getFirstName());
 		assertEquals("Mallinson" , service.getAccount(1).getLastName());
-		assertEquals(1 , service.getAccount(1).getAccountNumber());
+		assertEquals("1" , service.getAccount(1).getAccountNumber());
 	}
 	
 	@Test
 	public void jsonTest() {
-		assertEquals("{\"firstName\":\"Ian\",\"lastName\":\"Mallinson\",\"accountNumber\":1}" , service.getJSON(1));
+		assertEquals("{\"firstName\":\"Ian\",\"lastName\":\"Mallinson\",\"accountNumber\":\"1\"}" , service.getJSON(1));
 	}
 	
 	@Test

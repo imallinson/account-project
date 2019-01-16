@@ -12,7 +12,7 @@ public class Service {
 	private int counter = 1;
 	
 	public boolean addAccount(String firstName, String lastName) {
-		accounts.put(counter, new Account(firstName, lastName, counter));
+		accounts.put(counter, new Account(firstName, lastName, Integer.toString(counter)));
 		counter++;
 		return true;
 	}
