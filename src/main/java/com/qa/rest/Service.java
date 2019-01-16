@@ -29,7 +29,7 @@ public class Service {
 	}
 
 	public int searchName(String firstName) {
-		List<Account> foundAccounts = accounts.values().stream().filter(a -> a.getFirstName() == firstName).collect(Collectors.toList());
+		List<Account> foundAccounts = accounts.values().stream().filter(a -> a.getFirstName().equals(firstName)).collect(Collectors.toList());
 		return foundAccounts.size();
 	}
 }
