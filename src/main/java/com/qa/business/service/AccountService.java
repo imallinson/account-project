@@ -1,13 +1,15 @@
 package com.qa.business.service;
 
+import com.qa.persistence.domain.Account;
+
 public interface AccountService {
 
 	public String getAllAccounts();
 
-	public String addAccount(String account);
+	public String createAccount(Account account);
 
-	public String deleteAccount(Long id);
+	public String deleteAccount(String accountNumber);
 	
-	public String updateAccount(Long id, String firstName, String lastName);
+	public String updateAccount(Account account);
 
 }

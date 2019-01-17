@@ -65,4 +65,12 @@ public class AccountDBRepository implements AccountRepository {
 		Query query = manager.createQuery("SELECT a FROM Account a WHERE accountNumber = " + accountNumber);
 		return (Account) query.getSingleResult();
 	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;		
+	}
+	
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
 }

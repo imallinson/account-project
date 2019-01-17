@@ -10,8 +10,8 @@ import com.qa.persistence.domain.Account;
 import com.qa.persistence.domain.AccountMap;
 
 public class MapTests {
-	AccountRepository accounts;
-	Account testAccount;
+	private AccountRepository accounts;
+	private Account testAccount;
 	
 	@Before
 	public void before() {

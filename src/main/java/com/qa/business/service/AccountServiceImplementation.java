@@ -1,29 +1,35 @@
 package com.qa.business.service;
 
+import javax.inject.Inject;
+
+import com.qa.persistence.domain.Account;
+import com.qa.persistence.repository.AccountRepository;
+
 public class AccountServiceImplementation implements AccountService {
+	@Inject
+	AccountRepository repo;
 
 	@Override
 	public String getAllAccounts() {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.getAllAccounts();
 	}
 
 	@Override
-	public String addAccount(String account) {
-		// TODO Auto-generated method stub
-		return null;
+	public String createAccount(Account account) {
+		if (account.getAccountNumber() != "9999") {
+			return repo.createAccount(account);
+		}
+		return "{\"message\": \"account is blocked\"}";
 	}
 
 	@Override
-	public String deleteAccount(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public String deleteAccount(String accountNumber) {
+		return repo.deleteAccount(accountNumber);
 	}
 
 	@Override
-	public String updateAccount(Long id, String firstName, String lastName) {
-		// TODO Auto-generated method stub
-		return null;
+	public String updateAccount(Account account) {
+		return repo.updateAccount(account);
 	}
 
 }
