@@ -40,4 +40,9 @@ public class Account {
 	public String getAccountNumber() {
 		return accountNumber;
 	}
+
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+	
 }

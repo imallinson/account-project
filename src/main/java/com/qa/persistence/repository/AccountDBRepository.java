@@ -24,6 +24,9 @@ public class AccountDBRepository implements AccountRepository {
 	@Inject
 	private JSONUtil util;
 	
+	@Inject
+	private Account newAccount;
+	
 	@Override
 	public String getAllAccounts() {
 		Query query = manager.createQuery("SELECT a FROM Account a");
@@ -34,7 +37,10 @@ public class AccountDBRepository implements AccountRepository {
 	@Override
 	@Transactional(REQUIRED)
 	public String createAccount(String firstName, String lastName, String accountNumber) {
-		manager.persist(new Account(firstName, lastName, accountNumber));
+		newAccount.setFirstName(firstName);
+		newAccount.setLastName(lastName);
+		newAccount.setAccountNumber(accountNumber);
+		manager.persist(newAccount);
 		return "{\"message\": \"account sucessfully added\"}";
 	}
 
@@ -52,10 +58,13 @@ public class AccountDBRepository implements AccountRepository {
 	@Override
 	@Transactional(REQUIRED)
 	public String updateAccount(String firstName, String lastName, String accountNumber) {
+		newAccount.setFirstName(firstName);
+		newAccount.setLastName(lastName);
+		newAccount.setAccountNumber(accountNumber);
 		Account accountInDB = findAccount(accountNumber);
 		if (accountInDB != null) {
 			manager.remove(accountInDB);
-			manager.persist(new Account(firstName, lastName, accountNumber));
+			manager.persist(newAccount);
 //			Query query = manager.createQuery("UPDATE Account a Set firstName = " + firstName
 //					+ ", lastName = " + lastName + ", accountNumber = " + accountNumber + " WHERE id = " + id);
 //			query.executeUpdate();
