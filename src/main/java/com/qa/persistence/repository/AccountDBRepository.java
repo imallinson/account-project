@@ -56,9 +56,6 @@ public class AccountDBRepository implements AccountRepository {
 		if (accountInDB != null) {
 			manager.remove(accountInDB);
 			manager.persist(account);
-//			Query query = manager.createQuery("UPDATE Account a Set firstName = " + firstName
-//					+ ", lastName = " + lastName + ", accountNumber = " + accountNumber + " WHERE id = " + id);
-//			query.executeUpdate();
 			return "{\"message\": \"account sucessfully updated\"}";
 		}
 		return "{\"message\": \"account does not exist\"}";
