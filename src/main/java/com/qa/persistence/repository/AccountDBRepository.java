@@ -28,23 +28,23 @@ public class AccountDBRepository implements AccountRepository {
 
 	@Override
 	@Transactional(REQUIRED)
-	public boolean createAccount(String firstName, String lastName, String accountNumber) {
+	public String createAccount(String firstName, String lastName, String accountNumber) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 	@Override
 	@Transactional(REQUIRED)
-	public boolean deleteAccount(int id) {
+	public String deleteAccount(int id) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 	@Override
 	@Transactional(REQUIRED)
-	public boolean updateAccount(int id, String firstName, String lastName, String accountNumber) {
+	public String updateAccount(int id, String firstName, String lastName, String accountNumber) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 }

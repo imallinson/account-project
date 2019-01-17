@@ -17,28 +17,28 @@ public class AccountMapRepository implements AccountRepository {
 	}
 
 	@Override
-	public boolean createAccount(String firstName, String lastName, String accountNumber) {
+	public String createAccount(String firstName, String lastName, String accountNumber) {
 		accounts.put(counter, new Account(firstName, lastName, accountNumber));
 		counter++;
-		return true;
+		return "{\"message\": \"account has been sucessfully added\"}";
 	}
 
 	@Override
-	public boolean deleteAccount(int id) {
+	public String deleteAccount(int id) {
 		if (accounts.containsKey(id)) {
 			accounts.remove(id);
-			return true;
+			return "{\"message\": \"account has been sucessfully deleted\"}";
 		}
-		return false;
+		return "{\"message\": \"account does not exist\"}";
 	}
 
 	@Override
-	public boolean updateAccount(int id, String firstName, String lastName, String accountNumber) {
+	public String updateAccount(int id, String firstName, String lastName, String accountNumber) {
 		if (accounts.containsKey(id)) {
 			accounts.put(id, new Account(firstName, lastName, accountNumber));
-			return true;
+			return "{\"message\": \"account has been sucessfully updated\"}";
 		}
-		return false;
+		return "{\"message\": \"account does not exist\"}";
 	}
 
 }
