@@ -20,8 +20,8 @@ public class AccountMapRepository implements AccountRepository {
 
 	@Override
 	@Transactional(REQUIRED)
-	public String createAccount(String firstName, String lastName, String accountNumber) {
-		AccountMap.getInstance().getAccounts().put(accountNumber, new Account(firstName, lastName, accountNumber));
+	public String createAccount(Account account) {
+		AccountMap.getInstance().getAccounts().put(account.getAccountNumber(), account);
 		return "{\"message\": \"account has been sucessfully added\"}";
 	}
 
@@ -37,10 +37,10 @@ public class AccountMapRepository implements AccountRepository {
 
 	@Override
 	@Transactional(REQUIRED)
-	public String updateAccount(String firstName, String lastName, String accountNumber) {
-		if (AccountMap.getInstance().getAccounts().containsKey(accountNumber)) {
-			AccountMap.getInstance().getAccounts().remove(accountNumber);
-			AccountMap.getInstance().getAccounts().put(accountNumber, new Account(firstName, lastName, accountNumber));
+	public String updateAccount(Account account) {
+		if (AccountMap.getInstance().getAccounts().containsKey(account.getAccountNumber())) {
+			AccountMap.getInstance().getAccounts().remove(account.getAccountNumber());
+			AccountMap.getInstance().getAccounts().put(account.getAccountNumber(), account);
 			return "{\"message\": \"account has been sucessfully updated\"}";
 		}
 		return "{\"message\": \"account does not exist\"}";
