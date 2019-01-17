@@ -1,14 +1,18 @@
 package com.qa.persistence.repository;
 
-import static javax.transaction.Transactional.TxType.REQUIRED;
+import static javax.transaction.Transactional.TxType.REQUIRED; 
 import static javax.transaction.Transactional.TxType.SUPPORTS;
+
+import java.util.Collection;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import com.qa.persistence.domain.Account;
 import com.qa.util.JSONUtil;
 
 @Transactional(SUPPORTS)
@@ -22,29 +26,45 @@ public class AccountDBRepository implements AccountRepository {
 	
 	@Override
 	public String getAllAccounts() {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = manager.createQuery("SELECT a FROM Account a");
+		Collection<Account> accounts = (Collection<Account>) query.getResultList();
+		return util.getJSONForObject(accounts);
 	}
 
 	@Override
 	@Transactional(REQUIRED)
 	public String createAccount(String firstName, String lastName, String accountNumber) {
-		// TODO Auto-generated method stub
-		return null;
+		manager.persist(new Account(firstName, lastName, accountNumber));
+		return "{\"message\": \"account sucessfully added\"}";
 	}
 
 	@Override
 	@Transactional(REQUIRED)
 	public String deleteAccount(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Account accountInDB = findAccount(id);
+		if (accountInDB != null) {
+			manager.remove(accountInDB);
+			return "{\"message\": \"account sucessfully deleted\"}";
+		}
+		return "{\"message\": \"account does not exist\"}";
 	}
 
 	@Override
 	@Transactional(REQUIRED)
 	public String updateAccount(int id, String firstName, String lastName, String accountNumber) {
-		// TODO Auto-generated method stub
-		return null;
+		Account accountInDB = findAccount(id);
+		if (accountInDB != null) {
+			manager.remove(accountInDB);
+			manager.persist(new Account(firstName, lastName, accountNumber));
+//			Query query = manager.createQuery("UPDATE Account a Set firstName = " + firstName
+//					+ ", lastName = " + lastName + ", accountNumber = " + accountNumber + " WHERE id = " + id);
+//			query.executeUpdate();
+			return "{\"message\": \"account sucessfully updated\"}";
+		}
+		return "{\"message\": \"account does not exist\"}";
 	}
-
+	
+	private Account findAccount(int id) {
+		return manager.find(Account.class, id);
+	}
 }

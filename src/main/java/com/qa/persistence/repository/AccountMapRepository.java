@@ -40,5 +40,4 @@ public class AccountMapRepository implements AccountRepository {
 		}
 		return "{\"message\": \"account does not exist\"}";
 	}
-
 }
