@@ -1,4 +1,7 @@
 target
+.scannerwork
+.settings
+sonar-project.properties
 
 # Compiled class file
 *.class

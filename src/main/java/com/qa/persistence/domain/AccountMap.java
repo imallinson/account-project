@@ -1,10 +1,11 @@
 package com.qa.persistence.domain;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class AccountMap {
 	private static final AccountMap INSTANCE = new AccountMap();
-	private HashMap<String, Account> accounts = new HashMap<>();
+	private Map<String, Account> accounts = new HashMap<>();
 
 
 	private AccountMap() {
@@ -15,11 +16,11 @@ public class AccountMap {
 		return INSTANCE;
 	}
 
-	public HashMap<String, Account> getAccounts() {
+	public Map<String, Account> getAccounts() {
 		return accounts;
 	}
 
-	public void setAccounts(HashMap<String, Account> accounts) {
+	public void setAccounts(Map<String, Account> accounts) {
 		this.accounts = accounts;
 	}
 
