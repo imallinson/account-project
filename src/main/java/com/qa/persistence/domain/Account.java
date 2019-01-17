@@ -5,11 +5,15 @@ import javax.persistence.*;
 @Entity
 public class Account {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String firstName;
 	private String lastName;
 	private String accountNumber;
+	
+	public Account() {
+
+	}
 	
 	public Account(String firstName, String lastName, String accountNumber) {
 		this.firstName = firstName;
@@ -17,7 +21,7 @@ public class Account {
 		this.accountNumber = accountNumber;
 	}
 	
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
