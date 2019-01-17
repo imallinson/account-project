@@ -4,10 +4,14 @@ import javax.inject.Inject;
 
 import com.qa.persistence.domain.Account;
 import com.qa.persistence.repository.AccountRepository;
+import com.qa.util.JSONUtil;
 
 public class AccountServiceImplementation implements AccountService {
 	@Inject
 	AccountRepository repo;
+	
+	@Inject
+	private JSONUtil util;
 
 	@Override
 	public String getAllAccounts() {
@@ -15,7 +19,8 @@ public class AccountServiceImplementation implements AccountService {
 	}
 
 	@Override
-	public String createAccount(Account account) {
+	public String createAccount(String accountJSON) {
+		Account account = util.getObjectForJSON(accountJSON, Account.class);
 		if (account.getAccountNumber() != "9999") {
 			return repo.createAccount(account);
 		}
@@ -23,13 +28,14 @@ public class AccountServiceImplementation implements AccountService {
 	}
 
 	@Override
-	public String deleteAccount(String accountNumber) {
-		return repo.deleteAccount(accountNumber);
+	public String deleteAccount(int id) {
+		return repo.deleteAccount(id);
 	}
 
 	@Override
-	public String updateAccount(Account account) {
-		return repo.updateAccount(account);
+	public String updateAccount(int id, String accountJSON) {
+		Account account = util.getObjectForJSON(accountJSON, Account.class);
+		return repo.updateAccount(id, account);
 	}
 
 }

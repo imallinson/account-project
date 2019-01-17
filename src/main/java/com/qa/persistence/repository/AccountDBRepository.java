@@ -40,8 +40,8 @@ public class AccountDBRepository implements AccountRepository {
 
 	@Override
 	@Transactional(REQUIRED)
-	public String deleteAccount(String accountNumber) {
-		Account accountInDB = findAccount(accountNumber);
+	public String deleteAccount(int id) {
+		Account accountInDB = findAccount(id);
 		if (accountInDB != null) {
 			manager.remove(accountInDB);
 			return "{\"message\": \"account sucessfully deleted\"}";
@@ -51,8 +51,8 @@ public class AccountDBRepository implements AccountRepository {
 
 	@Override
 	@Transactional(REQUIRED)
-	public String updateAccount(Account account) {
-		Account accountInDB = findAccount(account.getAccountNumber());
+	public String updateAccount(int id, Account account) {
+		Account accountInDB = findAccount(id);
 		if (accountInDB != null) {
 			manager.remove(accountInDB);
 			manager.persist(account);
@@ -61,9 +61,8 @@ public class AccountDBRepository implements AccountRepository {
 		return "{\"message\": \"account does not exist\"}";
 	}
 	
-	private Account findAccount(String accountNumber) {
-		Query query = manager.createQuery("SELECT a FROM Account a WHERE accountNumber = " + accountNumber);
-		return (Account) query.getSingleResult();
+	private Account findAccount(int id) {
+		return manager.find(Account.class, id);
 	}
 
 	public void setManager(EntityManager manager) {

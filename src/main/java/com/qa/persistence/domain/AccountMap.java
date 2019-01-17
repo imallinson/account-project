@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class AccountMap {
 	private static final AccountMap INSTANCE = new AccountMap();
-	private Map<String, Account> accounts = new HashMap<>();
+	private Map<Integer, Account> accounts = new HashMap<>();
 
 
 	private AccountMap() {
@@ -16,11 +16,11 @@ public class AccountMap {
 		return INSTANCE;
 	}
 
-	public Map<String, Account> getAccounts() {
+	public Map<Integer, Account> getAccounts() {
 		return accounts;
 	}
 
-	public void setAccounts(Map<String, Account> accounts) {
+	public void setAccounts(Map<Integer, Account> accounts) {
 		this.accounts = accounts;
 	}
 

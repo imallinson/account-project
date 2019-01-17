@@ -6,10 +6,10 @@ public interface AccountService {
 
 	public String getAllAccounts();
 
-	public String createAccount(Account account);
+	public String createAccount(String accountJSON);
 
-	public String deleteAccount(String accountNumber);
+	public String deleteAccount(int id);
 	
-	public String updateAccount(Account account);
+	public String updateAccount(int id, String accountJSON);
 
 }
