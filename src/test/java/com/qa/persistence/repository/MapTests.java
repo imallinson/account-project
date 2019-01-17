@@ -10,7 +10,7 @@ import com.qa.persistence.domain.Account;
 import com.qa.persistence.domain.AccountMap;
 
 public class MapTests {
-	AccountMapRepository accounts;
+	AccountRepository accounts;
 	Account testAccount;
 	
 	@Before

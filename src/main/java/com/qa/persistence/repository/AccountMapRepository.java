@@ -1,8 +1,9 @@
 package com.qa.persistence.repository;
 
-import static javax.transaction.Transactional.TxType.REQUIRED;
+import static javax.transaction.Transactional.TxType.REQUIRED; 
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
+import javax.enterprise.inject.Alternative;
 import javax.transaction.Transactional;
 
 import com.qa.persistence.domain.Account;
@@ -10,6 +11,7 @@ import com.qa.persistence.domain.AccountMap;
 import com.qa.util.JSONUtil;
 
 @Transactional(SUPPORTS)
+@Alternative
 public class AccountMapRepository implements AccountRepository {
 	private JSONUtil util = new JSONUtil();
 
