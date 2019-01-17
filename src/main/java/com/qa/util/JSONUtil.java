@@ -4,7 +4,6 @@ import javax.enterprise.context.SessionScoped;
 
 import com.google.gson.Gson;
 
-@SessionScoped
 public class JSONUtil {
 
 	private Gson gson;

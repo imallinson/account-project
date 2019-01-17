@@ -21,10 +21,10 @@ public class AccountServiceImplementation implements AccountService {
 	@Override
 	public String createAccount(String accountJSON) {
 		Account account = util.getObjectForJSON(accountJSON, Account.class);
-		if (account.getAccountNumber() != "9999") {
-			return repo.createAccount(account);
+		if (account.getAccountNumber().equals("9999")) {
+			return "{\"message\": \"account is blocked\"}";			
 		}
-		return "{\"message\": \"account is blocked\"}";
+		return repo.createAccount(account);
 	}
 
 	@Override
@@ -37,5 +37,12 @@ public class AccountServiceImplementation implements AccountService {
 		Account account = util.getObjectForJSON(accountJSON, Account.class);
 		return repo.updateAccount(id, account);
 	}
-
+	
+	public void setRepo(AccountRepository repo) {
+		this.repo = repo;
+	}
+	
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
 }

@@ -34,25 +34,25 @@ public class MapTests {
 	@Test
 	public void deleteAccountTest() {
 		accounts.createAccount(testAccount);
-		assertEquals("{\"message\": \"account has been sucessfully deleted\"}", accounts.deleteAccount("1"));
+		assertEquals("{\"message\": \"account has been sucessfully deleted\"}", accounts.deleteAccount(1));
 		assertEquals("{}" ,accounts.getAllAccounts());
 	}
 	
 	@Test
 	public void deleteAccountNotExistingTest() {
-		assertEquals("{\"message\": \"account does not exist\"}", accounts.deleteAccount("1"));
+		assertEquals("{\"message\": \"account does not exist\"}", accounts.deleteAccount(1));
 	}
 	
 	@Test
 	public void updateAccountTest() {
 		accounts.createAccount(testAccount);
 		testAccount.setFirstName("Bob");
-		assertEquals("{\"message\": \"account has been sucessfully updated\"}", accounts.updateAccount(testAccount));
+		assertEquals("{\"message\": \"account has been sucessfully updated\"}", accounts.updateAccount(1, testAccount));
 		assertEquals("{\"1\":{\"firstName\":\"Bob\",\"lastName\":\"Mallinson\",\"accountNumber\":\"1\"}}", accounts.getAllAccounts());
 	}
 	
 	@Test
 	public void updateAccountNotExistingTest() {
-		assertEquals("{\"message\": \"account does not exist\"}", accounts.updateAccount(testAccount));
+		assertEquals("{\"message\": \"account does not exist\"}", accounts.updateAccount(1, testAccount));
 	}
 }

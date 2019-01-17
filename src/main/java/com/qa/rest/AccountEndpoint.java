@@ -25,13 +25,13 @@ public class AccountEndpoint {
 	@Path("/json/{id}")
 	@DELETE
 	public String deleteAccount(@PathParam("id") int id) {
-		return null;
+		return service.deleteAccount(id);
 	}
 
 	@Path("/json/{id}")
 	@PUT
 	public String updateAccount(@PathParam("id") int id, String account) {
-		return null;
+		return service.updateAccount(id, account);
 	}
 	
 	public void setService(AccountService service) {
